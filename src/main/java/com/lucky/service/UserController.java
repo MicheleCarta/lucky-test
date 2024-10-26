@@ -30,7 +30,7 @@ public class UserController {
     @PutMapping("/users/{id}")
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody @Valid UserDTO userRequest) {
         userService.updateUser(id, userRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("User updated successfully");
+        return ResponseEntity.status(HttpStatus.OK).body("User updated successfully");
     }
 
     @GetMapping("/users")
@@ -46,7 +46,7 @@ public class UserController {
     @DeleteMapping("/users")
     public ResponseEntity<String> deleteUsers() {
         userService.deleteUsers();
-        return ResponseEntity.status(HttpStatus.CREATED).body("Users has been removed successfully");
+        return ResponseEntity.status(HttpStatus.OK).body("Users has been removed successfully");
     }
 
     @DeleteMapping("/users/{id}")
