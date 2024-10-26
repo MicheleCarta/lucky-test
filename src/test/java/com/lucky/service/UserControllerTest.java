@@ -59,7 +59,7 @@ public class UserControllerTest {
         Long userId = 1L;
         ResponseEntity<String> response = userController.updateUser(userId, userDTO);
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("User updated successfully", response.getBody());
         verify(userService, times(1)).updateUser(eq(userId), any(UserDTO.class));
     }
@@ -107,7 +107,7 @@ public class UserControllerTest {
     void testDeleteUsers_Success() {
         ResponseEntity<String> response = userController.deleteUsers();
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Users has been removed successfully", response.getBody());
         verify(userService, times(1)).deleteUsers();
     }
