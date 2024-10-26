@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001-init-schema
+      author: user-service
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: ../sql/0001-init-schema.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

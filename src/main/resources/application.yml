@@ -1,0 +1,38 @@
+server.port: 3000
+
+management:
+  health:
+    livenessstate.enabled: true
+    readinessstate.enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,loggers
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3259}/${DATABASE_NAME:users}
+    username: ${DATABASE_USER:statements}
+    password: ${DATABASE_PASSWORD:statements}
+  jpa:
+    open-in-view: false
+
+  cache:
+    cache-names: user-service
+    caffeine.spec: maximumSize=4096,expireAfterAccess=1800s
+    type: caffeine
+  sql:
+    init:
+      platform: postgres
+
+logging:
+  traceable:
+    http.mdc-cleaner-disabled: true
